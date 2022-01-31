@@ -1,0 +1,571 @@
+{% extends "base.html" %}
+{% block content %}
+ 
+    
+
+  
+<!-- Page Wrapper -->
+    <div id="wrapper">
+         <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+             <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-fw fa-table"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">SCRUPA</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span> </span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+<!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span> Data Dashboard</span>
+                </a>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                         <h6 class="collapse-header">Database:</h6>
+                        <a class="collapse-item" href="{{ url_for('data_service.get_datasets') }}">View Database(s)</a>
+                         
+
+                        
+                         
+                    </div>
+                </div>
+            </li>
+<!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+
+<!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+</ul>
+
+
+  <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                   
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+ 
+ 
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-info-circle">Help</i>
+
+
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter"></span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Explore
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">February 12, 2021</div>
+                                        <span class="font-weight-bold">How to create a database?</span>
+                                    </div>
+                                </a>
+
+                                 <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">February 12, 2021</div>
+                                        <span class="font-weight-bold">How import data?</span>
+                                    </div>
+                                </a>
+                                 
+                                
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Articles</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Explore
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                            alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                            problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                            alt="">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how
+                                            would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            alt="">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with
+                                            the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ current_user.firstname }}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="{{ url_for('static', filename='img/admin.svg') }}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+{% if current_user.is_authenticated %}
+                                <a class="dropdown-item" href="{{ url_for('user_service.logout') }}" >
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+{% endif %}
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+      
+
+       
+ 
+      
+
+       
+        <div class="container-fluid">
+
+               
+
+                    <div class="panel-heading">   
+                    <table>
+                    <tr>
+                    <td>                     
+<a class="btn btn-dark panel-button" data-toggle="modal"
+                                           data-target="#uploadFileModal"
+                                           href="#uploadFileModal">
+                                 <i class="fas fa-upload"></i> Upload new  file 
+
+ 
+                            </a>
+</td>
+ {% if access_permission or (current_user.username == ds.owner) %}
+<td>
+   <a class="btn btn-light panel-button" data-toggle="modal"
+                                               data-target="#joinTablesModal"
+                                               href="#joinTablesModal"><i class="fas fa-plus-square"></i>
+                                            Join tables</a>
+
+
+</td>
+
+{% endif %}
+</tr>    </table>  
+  
+    
+  </div>
+
+ 
+
+
+
+              <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{% for message in get_flashed_messages(with_categories=True) %}
+            <div class="alert alert-{{ message[0] }}">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message[1] }}
+            </div>
+
+        </h6> </div>
+    </div>
+</div>
+        {% endfor %} 
+
+         
+                        <div class="card-body">
+
+<div class="table-responsive">
+            <table class="table table-bordered" cellspacing="0" width="100%"
+                   id="dataTable">
+                 
+                
+                     <thead>
+
+<tr>
+                        <th>Table</th>
+                        <th>Description</th>
+                        <th>Active Users</th>
+                        <th>Edit</th>
+                        <th>Remove</th>
+                    </tr>
+</thead>
+ 
+                  <tbody>
+                    {% for t in tables %}
+                        <tr>
+                            <td><a href="/datasets/{{ ds.id }}/tables/{{ t.name|urlencode }}">{{ t.name }}</a></td>
+                            <td> {{ t.desc }}</td>
+                            <td> {{ t.active_users_count }} </td>
+                            <td>
+                                <button id="metadata-button" data-toggle="modal" data-target="#metadata"
+                                        class="btn btn-xs btn-primary metadataEditButton"
+                                        data-old-name="{{ t.name }}"
+                                        data-desc="{{ t.desc }}">
+                                    Edit
+                                </button>
+                            </td>
+                            <td style="text-align: center;">
+                                <form action="/datasets/{{ ds.id }}/tables/{{ t.name|urlencode }}/delete" method="post">
+                                    <button type="submit" class="btn btn-xs btn-danger">&times;
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                     <div class="modal" tabindex="-1" role="dialog" aria-hidden="true" id="metadata">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form class="form-group" id="formMetadata">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Change name and/or description</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="t-name">Name</label>
+                                <input type="text" name="t-name" class="form-control" value="" id="t-name" required>
+                    <small class="form-text text-muted">Table names cannot contain double quotes ("), they will be removed.</small>
+
+                                <label for="t-desc">Description</label>
+                                <textarea type="text" class="form-control"  name="t-desc" id="t-desc" required></textarea>
+                                <input type="hidden" id="t-old-name" name="t-old-name">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save changes
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                    </tbody>
+            </table>
+</div>
+</div>
+        </div> <!-- container fluid-->
+
+
+<div class="row" style="margin-top: 10px;">
+        <div class="modal fade" id="uploadFileModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form class="form-group" action="/datasets/{{ ds.id }}" method="post" enctype=multipart/form-data>
+                        <div class="modal-header">
+                            <h5 class="modal-title">Upload data</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="ds-files">Supported extensions: CSV, XLSX, ZIP, DUMP, SQL</label>
+                            <input type="file" class="form-control-file" name="file" id="ds-files"
+                                   accept=".csv,.zip,.dump,.sql,.xlsx" required>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="ds-type-deduction"
+                                       id="ds-type-deduction" data-user="ds-type-deduction">
+                                <label class="form-check-label">Automatic type deduction</label>
+                            </div>
+                            <input type="text" name="ds-table-name" id="ds-table-name" class="form-control show-input"
+                                   placeholder="Table name" style="display:none">
+                            <small class="form-text text-muted show-input"  style="display:none;">Table names cannot contain double quotes ("), they will be removed.</small>
+                            <textarea name="ds-table-desc" id="ds-table-desc" class="form-control show-input"
+                                      value="Default description" style="display:none">Default description</textarea>
+                            <small class="form-text text-muted">
+                                If a zip file is uploaded, default name (file name) and description will be used for
+                every table. <br><br>
+                                If a dump/csv file is uploaded, you can choose a custom table name
+                or let the system use the default name.
+                            </small>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div></div>
+
+
+
+
+        {% if access_permission or (current_user.username == ds.owner) %}
+            <div class="modal fade" id="addAccessModal" tabindex="-1" role="dialog"
+                 aria-labelledby="modalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form class="form-control" action="/datasets/{{ ds.id }}/share" method="post">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel">Add access</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="ds-share-name">Username</label>
+                                    <input type="text" class="form-control" id="ds-share-name"
+                                           name="ds-share-name" placeholder="Username"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ds-share-role">Status</label>
+                                    <select type="role" class="form-control" id="ds-share-role"
+                                            name="ds-share-role" required>
+                                        <option value="moderator">Moderator</option>
+                                        <option value="contributor">Contributor</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="submit">Add</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="modal fade" id="removeAccessModal" tabindex="-1" role="dialog"
+                 aria-labelledby="modalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form class="form-control" action="/datasets/{{ ds.id }}/share/delete" method="post">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel">Remove access</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="ds-delete-user-select">Username</label>
+                                    <select type="role" class="form-control" id="ds-delete-user-select"
+                                            name="ds-delete-user-select" required>
+                                        {% for user in users_with_access %}
+                                            {% if user[0] != ds.owner %}
+                                                <option value="{{ user[0] }}">{{ user[0] }} with
+                                                    role {{ user[1] }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="submit">Delete</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+         <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Scrupa 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+ </div> <!-- id=wrapper -->
+
+         
+        
+    </div>
+ <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            var dynamicForms = new DynamicForms();
+            dynamicForms.automaticallySetupForm();
+
+            $('.metadataEditButton').click(function (e) { // .stuff wijst op een klasse
+                e.preventDefault();
+                $('#t-name').val($(this).attr('data-old-name'));
+                $('#t-desc').val($(this).attr('data-desc'));
+                $('#t-old-name').val($(this).attr('data-old-name'));
+
+                $('#metadata').show();
+            });
+
+
+            $('#formMetadata').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'PUT',
+                    url: '/api' + window.location.pathname + '/update-metadata?' + $('#formMetadata').serialize(),
+                    success: function () {
+                        window.location.reload();
+                    },
+                    error: function () {
+                        window.location.reload();
+                    }
+                });
+                $('#metadata').modal('hide');
+            });
+        });
+
+        function update_selection(changed_name, changed_value) {
+            var dropdown_box_to_change = changed_name + "-columns";
+
+            $.ajax({
+                type: 'GET',
+                url: window.location.pathname + '/join-tables/' + encodeURIComponent(changed_value),
+                async: true,
+                dataType: 'json',
+                success: function (data) {
+                    var new_select_options = "";
+
+                    for (var column in data) {
+                        new_select_options += "<option value=" + data[column] + ">" + data[column] + "</option>";
+                    }
+                    document.getElementById(dropdown_box_to_change).innerHTML = new_select_options;
+                }
+            });
+        }
+
+        $("input[type=file]").on('change', function () {
+            if (this.files[0].name.substr(this.files[0].name.length - 4) == ".csv" ||
+
+                this.files[0].name.substr(this.files[0].name.length - 4) == ".sql" ||
+
+                this.files[0].name.substr(this.files[0].name.length - 5) == ".dump") {
+                $('.show-input').show();
+            }
+            else {
+                $('.show-input').hide();
+            }
+        });
+
+    </script>
+{% endblock %}

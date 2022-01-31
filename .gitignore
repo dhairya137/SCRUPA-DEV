@@ -1,0 +1,6 @@
+.idea
+venv
+app/__pycache__
+.pytest_cache
+*.pyc
+temp_input

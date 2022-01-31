@@ -1,0 +1,82 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true" id="classifyKNN">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-group" id="formClassifyKNNModal">
+                <div class="modal-header">
+                    <h5 class="modal-title">K Nearest Neighbours</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="col-name">Class(Label) Column</label>
+                    <select class="custom-select" name="col-name" id="col-name">
+                        {% for column in table.columns[1:] %}
+                            
+                                <option value="{{ column.name }}">{{ column.name|capitalize }}
+                                    ({{ column.type|capitalize }})
+                                </option>
+                             
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="modal-body">
+                    <label for="col-name">Test Data Ratio</label>
+                    <select class="custom-select" name="test-ratio" id="test-ratio">
+                         
+                                <option value="0.1">10% </option>
+                                <option value="0.2">20% </option>
+                                <option value="0.3">30% </option>
+                                <option value="0.4">40% </option>
+                                <option value="0.5">50% </option>
+                                
+                            
+                    </select>
+                </div>
+
+                <div class="modal-body">
+                    <label for="col-name">Number of Neighbours</label>
+                    <select class="custom-select" name="neighbours" id="neighbours">
+                         
+                                <option value="1">1 </option>
+                                <option value="2">2</option>
+                                <option value="3">3 </option>
+                                <option value="4">4 </option>
+                                <option value="5">5 </option>
+                                <option value="6"> 6</option>
+                                <option value="7"> 7</option>
+                                <option value="8"> 8</option>
+                                <option value="9"> 9</option>
+                                <option value="10"> 10</option>
+                                 
+                                
+                            
+                    </select>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Train
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('#formClassifyKNNModal').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'PUT',
+            url: '/data_mining' + window.location.pathname + '/classifyKNN?' + $('#formClassifyKNNModal').serialize(),
+            success: function (response) {
+                window.location = response;
+            },
+            error: function () {
+                window.location.reload();
+            }
+        });
+    });
+</script>

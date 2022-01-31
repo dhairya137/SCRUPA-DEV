@@ -1,0 +1,544 @@
+{% extends "base.html" %}
+{% block content %}
+ 
+    <div class="row" style="margin-bottom: 10px;">
+		<div>
+			<h1>{{ table.name }}</h1>
+			<p>{{ table.desc }}</p>
+			<a href="/datasets/{{ table.dataset }}" role="button" class="btn btn-sm btn-dark">Return to dataset</a>
+		</div>
+	</div>
+
+  
+<!-- Page Wrapper -->
+    <div id="wrapper">
+         <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+             <!-- Heading -->
+            <div class="sidebar-heading">
+                Database
+            </div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Create Dataabase</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <a class="collapse-item" href="buttons.html">Create Dataset</a>
+                         
+                    </div>
+                </div>
+            </li>
+
+<!-- Nav Item - Data Transformations Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Data Transformation</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <h6 class="collapse-header">Row Transformations:</h6>
+                        
+
+<a class="collapse-item" data-toggle="modal" data-target="#addRow" href="#addRow"><i class="fas fa-plus-square"></i>Add rows</a>
+
+<a class="collapse-item" id="removeRow" href="#"><i class="fas fa-minus-circle"></i>Remove row(s)</a>
+<a class="collapse-item" data-toggle="modal"
+                                           data-target="#removePredicate" href="#removePredicate"><i
+                                            class="fas fa-minus-circle"></i>
+                                        Remove by predicate</a>
+
+                                        <a class="collapse-item" data-toggle="modal"
+                                           data-target="#removeIdenticalRowsAlg" href="#removeIdenticalRowsAlg"><i
+                                            class="fas fa-minus-circle"></i>
+                                        Deduplicate table</a>
+
+                                        
+  <h6 class="collapse-header">Column Transformations:</h6>
+  <a class="collapse-item" data-toggle="modal"
+                                           data-target="#addColumn"
+                                           href="#addColumn"><i class="fas fa-plus-square"></i> Add column</a>
+
+                                           <a class="collapse-item" data-toggle="modal"
+                                           data-target="#deleteColumn" href="#deleteColumn"><i
+                                            class="fas fa-minus-circle"></i> Delete column</a>
+
+<a class="collapse-item" data-toggle="modal"
+                                           data-target="#updateColumn" href="#updateColumn"><i
+                                            class="fas fa-edit"></i> Change column type</a>
+                                            <a class="collapse-item" data-toggle="modal"
+                                           data-target="#renameColumnModal" href="#renameColumnModal"><i
+                                            class="fas fa-edit"></i> Rename column</a>
+                        
+     <h6 class="collapse-header">Numerical:</h6>           
+
+ <a class="collapse-item" data-toggle="modal"
+                                           data-target="#normalizeModal"
+                                           href="#normalizeModal"><i class="fas fa-align-center"></i> Normalize</a>
+
+                    <a class="collapse-item" data-toggle="modal"
+                                           data-target="#discretizeModal" href="#discretizeModal"><i
+                                            class="fas fa-chart-bar"></i> Discretize</a>
+
+                    </div>
+                </div>
+            </li>
+
+
+
+
+
+<!-- Nav Item - Data Transformations Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCleansing"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Data Cleansing</span>
+                </a>
+                <div id="collapseCleansing" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                       <a class="collapse-item" data-toggle="modal" data-target="#ImputeMissingData"
+                           href="#ImputeMissingData"><i class="fas fa-syringe"></i> Fill empty data</a>
+
+                           <a class="collapse-item" data-toggle="modal" data-target="#findAndReplace"
+                           href="#findAndReplace"><i class="fas fa-search"></i> Find and replace</a>
+
+</div></div></li>
+
+
+<!-- Nav Item - Data Science Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDS"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Data Science</span>
+                </a>
+                <div id="collapseDS" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                   <h6 class="collapse-header">Classification:</h6> 
+<a class="collapse-item" data-toggle="modal"
+                                           data-target="#classifyNBModal"
+                                           href="#classifyNBModal"><i class="fas fa-align-center"></i> Naive Bayes</a>
+
+                                           <a class="collapse-item" data-toggle="modal"
+                                           data-target="#classifyDT"
+                                           href="#classifyDT"><i class="fas fa-align-center"></i> Decision Tree</a>
+
+                                           <a class="collapse-item" data-toggle="modal"
+                                           data-target="#classifyANN"
+                                           href="#classifyANN"><i class="fas fa-align-center"></i> Perceptron (ANN)</a>
+
+
+                                           <a class="collapse-item" data-toggle="modal"
+                                           data-target="#classifyKNN"
+                                           href="#classifyKNN"><i class="fas fa-align-center"></i> KNN</a> 
+
+                 <h6 class="collapse-header">Regression:</h6>         
+                 
+                 <a class="collapse-item" data-toggle="modal"
+                                           data-target="#regressionLinear"
+                                           href="#regressionLinear"><i class="fas fa-align-center"></i> Linear</a>
+
+                                           <a class="collapse-item" data-toggle="modal"
+                                           data-target="#regressionElastic"
+                                           href="#regressionElastic"><i class="fas fa-align-center"></i> Elastic Net</a>                  
+                      <a class="collapse-item" data-toggle="modal"
+                                           data-target="#regressionLasso"
+                                           href="#regressionLasso"><i class="fas fa-align-center"></i> Lasso</a>
+
+                                           <a class="collapse-item" data-toggle="modal"
+                                           data-target="#regressionSVR"
+                                           href="#regressionSVR"><i class="fas fa-align-center"></i> SVR</a>
+
+</div></div></li>
+
+
+<!-- Nav Item - Visualization Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVisz"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-pie-chart"></i>
+                    <span>Visualization</span>
+                </a>
+                <div id="collapseVisz" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                   <h6 class="collapse-header">Reports:</h6> 
+ 
+  <a class="collapse-item" data-toggle="modal" data-target="#askStats"
+                           href="#askStats"><i class="fas fa-pie-chart"></i> Statistics</a>
+
+                 
+</div></div></li>
+
+
+
+
+
+
+
+
+</ul>
+        </div> <!-- id=wrapper -->
+
+    <div class="row">
+        
+        <div class="col-sm-2">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <a class="btn btn-dark panel-button" data-toggle="collapse"
+                           data-parent="#accordion"
+                           href="#collapseOne"><i class="fas fa-fw fa-cog"></i> Row transformations</a>
+                    </div>
+
+
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal" data-target="#addRow"
+                                           href="#addRow"><i class="fas fa-plus-square"></i>
+                                        Add row</a></td>
+                                </tr>
+
+
+                                
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" id="removeRow" href="#"><i
+                                               class="fas fa-minus-circle"></i>
+                                        Remove selected row(s)</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#removePredicate" href="#removePredicate"><i
+                                            class="fas fa-minus-circle"></i>
+                                        Remove by predicate</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#removeIdenticalRowsAlg" href="#removeIdenticalRowsAlg"><i
+                                            class="fas fa-minus-circle"></i>
+                                        Deduplicate table</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           class="btn btn-dark panel-button"
+                           href="#collapseTwo"><i class="fas fa-columns"></i>
+                            Column transformations</a>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#addColumn"
+                                           href="#addColumn"><i class="fas fa-plus-square"></i> Add column</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#deleteColumn" href="#deleteColumn"><i
+                                            class="fas fa-minus-circle"></i> Delete column</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#updateColumn" href="#updateColumn"><i
+                                            class="fas fa-edit"></i> Change column type</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#renameColumnModal" href="#renameColumnModal"><i
+                                            class="fas fa-edit"></i> Rename column</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           class="btn btn-dark panel-button"
+                           href="#collapseThree"><i class="fas fa-chart-bar"></i>
+                            Numerical transformations</a>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#normalizeModal"
+                                           href="#normalizeModal"><i class="fas fa-align-center"></i> Normalize</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#discretizeModal" href="#discretizeModal"><i
+                                            class="fas fa-chart-bar"></i> Discretize</a></td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           class="btn btn-dark panel-button"
+                           href="#collapseClassification"><i class="fas fa-chart-bar"></i>
+                            Classification</a>
+                    </div>
+                    <div id="collapseClassification" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#classifyNBModal"
+                                           href="#classifyNBModal"><i class="fas fa-align-center"></i> Naive Bayes</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#classifyDT"
+                                           href="#classifyDT"><i class="fas fa-align-center"></i> Decision Tree</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#classifyANN"
+                                           href="#classifyANN"><i class="fas fa-align-center"></i> Perceptron (ANN)</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#classifyKNN"
+                                           href="#classifyKNN"><i class="fas fa-align-center"></i> KNN</a>
+                                    </td>
+                                </tr>
+
+                                 <tr> <td>
+                                    <div class="panel-sub-heading">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           class="btn btn-dark panel-button"
+                                           href="#collapseRegressione"><i class="fas fa-chart-bar"></i>
+                                            Reg</a>
+                                    </div>
+                                </td>
+                                </tr>
+<tr>
+    <td>
+                                <div id="collapseRegressione" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                         
+                                        <table class="table">
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#classifyKNN"
+                                           href="#classifyKNN"><i class="fas fa-align-center"></i> KNNe</a>
+                                    </td>
+                                </tr>
+                                </table>
+
+                                 
+                            </div>
+                        </div>
+                    </td>
+                    </tr>  
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           class="btn btn-dark panel-button"
+                           href="#collapseRegression"><i class="fas fa-chart-bar"></i>
+                            Regression</a>
+                    </div>
+                    <div id="collapseRegression" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#regressionLinear"
+                                           href="#regressionLinear"><i class="fas fa-align-center"></i> Linear</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#regressionElastic"
+                                           href="#regressionElastic"><i class="fas fa-align-center"></i> Elastic Net</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#regressionLasso"
+                                           href="#regressionLasso"><i class="fas fa-align-center"></i> Lasso</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#regressionSVR"
+                                           href="#regressionSVR"><i class="fas fa-align-center"></i> SVR</a>
+                                    </td>
+                                </tr>
+
+                                 
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="btn btn-dark panel-button" data-toggle="modal" data-target="#askStats"
+                           href="#askStats"><i class="fas fa-pie-chart"></i> Visualization</a>
+                    </div>
+                </div> 
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="btn btn-dark panel-button" data-toggle="modal" data-target="#findAndReplace"
+                           href="#findAndReplace"><i class="fas fa-search"></i> Find and replace</a>
+                    </div>
+                </div>
+                 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           class="btn btn-dark panel-button"
+                           href="#collapseFour"><i class="fas fa-calendar-check"></i>
+                            Versions</a>
+                    </div>
+                     <div id="collapseFour" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+									<a class="btn btn-light panel-button" id="history" href="/datasets/{{ table.dataset }}/tables/{{ table.name|urlencode }}/history"><i class="fas fa-history"></i>
+                                        History</a>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal" data-target="#rawData"
+                                           href="#rawData"><i class="fas fa-undo"></i> Raw data</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a class="btn btn-light panel-button" data-toggle="modal"
+                                           data-target="#backups" href="#backups"><i
+                                            class="fas fa-clone"></i> Backups</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="btn btn-dark panel-button" data-toggle="modal" data-target="#ImputeMissingData"
+                           href="#ImputeMissingData"><i class="fas fa-syringe"></i> Fill empty data</a>
+                    </div>
+                </div>
+                 
+                
+                
+                 
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <table class="table table-striped table-bordered table-responsive-sm" cellspacing="0" width="100%"
+                   id="dataTable">
+                <thead>
+                <tr>
+                    <th class="scrolling-disabled"></th>
+ 
+
+ 
+                    {% for column in table.columns[1:] %}
+                        <th>
+                            {{ column.name|capitalize }}
+                        </th>
+                    {% endfor %}
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function () {
+                    var dynamicForms = new DynamicForms();
+                    dynamicForms.automaticallySetupForm();
+                    var table = $('#dataTable').DataTable({
+                        colReorder: true,
+                        colReorder: {
+                            fixedColumnsLeft: 1
+                        },
+                        scrollX: "auto",
+                        scrollY: "50vh",
+                        scrollCollapse: true,
+                        processing: true,
+                        serverSide: true,
+                        stateSave: true,
+                        dom: 'Blfrtip',
+                        buttons: ['colvis'],
+                        ajax: '/api' + window.location.pathname,
+                        order: [[1, 'asc']],
+                        rowsDefs: [{}],
+                        columnDefs: [{
+                            targets: 0,
+                            searchable: false,
+                            orderable: false,
+                            width: '1%', // min width
+                             render: function (data) {
+                                return '<input type="checkbox" class="form-check" name="row-' + data + '" id="row-' + data + '">';
+                            }
+                        }],
+                        columns: [
+                        {% for column in table.columns %}
+                             { data: "{{ column.name|safe }}" }{{ "," if not loop.last}}
+                        {% endfor %}
+                        ]
+                    });
+                    $('#removeRow').click(function () {
+                        $.ajax({
+                            type: 'DELETE',
+                            url: '/api' + window.location.pathname + '/rows?' + $('input:checked').serialize(),
+                            contentType: 'application/json;charset=UTF-8',
+                            success: function () {
+                                window.location.reload();
+                            }
+                        })
+                    });
+                }
+            );
+        </script>
+        {% include 'data_service/modals/modals.html' %}
+    </div>
+{% endblock %}

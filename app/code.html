@@ -1,0 +1,65 @@
+ $('#editRow').click(function () {
+
+                        $.ajax({
+                            type: 'PUT',
+                            url: '/api' + window.location.pathname + '/editrows?' + $('input:checked').serialize(),
+                            contentType: 'application/json;charset=UTF-8',
+                            success: function () {
+                                window.location.reload();
+                            }
+                        })
+                    });
+
+
+
+ <tr>
+                                    <td><a class="btn btn-light panel-button"   data-toggle="modal" data-target="#editRow" href="#editRow?" data-name='jamal'><i
+                                               class="fas fa-minus-circle"></i>
+                                        Edit selected row</a></td>
+                                </tr>
+
+
+$('#editRoww').click(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/api' + window.location.pathname + '/edit_row?' + $('input:checked').serialize(),
+                            contentType: 'application/json;charset=UTF-8',
+                            success: function () {
+                                window.location.reload();
+                            }
+                        })
+                    });
+
+                    
+def edit_row(self, schema_id, table_name, row_ids, add_history=True):
+        schema_name = 'schema-' + str(schema_id)
+        try:
+            for row_id in row_ids:
+
+                column_tuple = self.get_column_names(schema_id, table_name)
+                value_tuple = db.engine.execute(
+                    'SELECT * FROM {}.{} WHERE id={};'.format(*_ci(schema_name, table_name),
+                                                              _cv(row_id))).fetchone()[1:]
+
+                db.engine.execute('DELETE FROM {}.{} WHERE id={};'.format(*_ci(schema_name, table_name), _cv(row_id)))
+                # Log action to history
+                values_query = 'DEFAULT'
+
+                for value in value_tuple:
+                    values_query += ', '
+
+                    if value is None:
+                        values_query += 'NULL'
+                    else:
+                        values_query += _cv(value)
+                if add_history:
+                    inverse_query = 'INSERT INTO {}.{}({}) VALUES ({});'.format(*_ci(schema_name, table_name),
+                                                                                ', '.join(
+                                                                                    _ci(column_name) for column_name in
+                                                                                    column_tuple),
+                                                                                values_query)
+                    history.log_action(schema_id, table_name, datetime.now(), 'Deleted row #' + str(row_id),
+                                       inverse_query)
+        except Exception as e:
+            app.logger.error("[ERROR] Unable to edit row from table '" + table_name + "'")
+            app.logger.exception(e)

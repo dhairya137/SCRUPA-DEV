@@ -1,0 +1,17 @@
+"id","created","modified","rating","type_review","title","text","analyzed","author","author_person","date_published","raw_date_published","review_hash","dump","company_id","company_review_site_id","company_review_site_page_id","parent_id","last_analyze_time"
+2832,"2020-07-01 09:19:08.326841+00","2020-07-01 09:19:08.326841+00","4.4","parsed","Sectorlink","Sectorlink’s offers are quite impressive. There doesn’t seem to be any major downside to their services. They look like the perfect host and the fifteen-day trial period is a great way to check that out.
+Still not sure if this is the right web host for you? Check out our top recommended web hosts to learn more.
+Pros
+
+Fifteen-day trial period
+Good live support
+Good social media presence
+Windows and Linux in the same account
+
+Cons
+
+No free SSL certificates
+Expensive packages
+
+",True,"Jabran Kundi",NULL,"2020-03-31 00:00:00+00","2020-03-31","025cd37856c4ce14b6705386813f706e","{""name"": ""Sectorlink"", ""@type"": ""Review"", ""author"": ""Jabran Kundi"", ""reviewBody"": ""Sectorlink’s offers are quite impressive. There doesn’t seem to be any major downside to their services. They look like the perfect host and the fifteen-day trial period is a great way to check that out.\nStill not sure if this is the right web host for you? Check out our top recommended web hosts to learn more.\nPros\n\nFifteen-day trial period\nGood live support\nGood social media presence\nWindows and Linux in the same account\n\nCons\n\nNo free SSL certificates\nExpensive packages\n\n"", ""reviewRating"": {""@type"": ""Rating"", ""bestRating"": ""5"", ""ratingValue"": ""4.4"", ""worstRating"": ""0""}, ""datePublished"": ""2020-03-31""}",8,337,662,NULL,"2020-07-01 11:21:36.588456+00"
+1355,"2020-06-30 10:58:39.292078+00","2020-06-30 10:58:39.292078+00","1","parsed",NULL,"If godaddy charge you for something and you want to cancel it,they will do everything to stop you getting a refund...always trying to upsell you things you...",True," Ian Regan ",NULL,NULL,NULL,"c98a75e25f236696e6ab56c5f8e52173","{""@type"": ""Review"", ""about"": ""terrible transaction service"", ""author"": "" Ian Regan "", ""dateCreated"": ""February 12, 2019 "", ""description"": ""If godaddy charge you for something and you want to cancel it,they will do everything to stop you getting a refund...always trying to upsell you things you..."", ""reviewRating"": {""@type"": ""Rating"", ""bestRating"": ""5"", ""ratingValue"": "" 0 "", ""worstRating"": ""0""}}",1,103,230,NULL,"2020-07-17 09:10:49.808056+00"
