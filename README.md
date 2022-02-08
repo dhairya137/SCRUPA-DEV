@@ -13,6 +13,9 @@
 To setup your system, run:
 `./setup.sh`
 
+To run with docker 
+`docker-compose up` 
+
 To run the tests, run:
 `pytest`
 
